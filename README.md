@@ -1,5 +1,7 @@
 ## Hi there 👋
 
+I am a professor trying to improve my class to better support my students learning.
+
 <!--
 **jsullwold-mclennan/jsullwold-mclennan** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
 
