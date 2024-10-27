@@ -1,0 +1,227 @@
+/* styles.css */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+header {
+    background-color: #007bff;
+    color: #fff;
+    padding: .25em 2em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+nav {
+    display: flex;
+    gap: 1em;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1em;
+    padding: 0.5em 1em;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #0056b3;
+    border-radius: 5px;
+}
+
+nav form {
+    display: inline;
+}
+
+nav button {
+    background: none;
+    border: hidden;
+    color: #fff;
+    font-size: 1.1em;
+    padding: 0.6em 1em;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+nav button:hover {
+    background-color: #0056b3;
+    border-radius: 5px;
+}
+
+
+main {
+    flex: 1;
+    padding: 2em;
+    max-width: 1200px;
+    margin: 10px auto 0;
+    background-color: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+h2 {
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 0.5em;
+    margin-bottom: 1.5em;
+    font-size: 2em;
+}
+
+p, ul, table {
+    margin-bottom: 1.5em;
+}
+
+ul {
+    padding-left: 1.5em;
+    list-style-type: disc;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+}
+
+tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+footer {
+    text-align: center;
+    padding: 1em 0;
+    background-color: #007bff;
+    color: #fff;
+    width: 100%;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: auto;
+}
+
+.btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #0056b3;
+}
+
+.checkout-btn {
+    background-color: #007bff;
+    color: #fff;
+    padding: 2px 5px;
+    text-align: center;
+    border-radius: 5px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 1.1em;
+    transition: background-color 0.3s;
+}
+
+.checkout-btn:hover {
+    background-color: #0056b3;
+}
+
+/* General form container styles */
+.form-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0015px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    text-align: center; 
+}
+
+/* Form element styles */
+.form-container label {
+    display: block;
+    margin-bottom: 0.5em;
+    font-weight: bold;
+    color: #333; 
+    text-align: left;
+}
+
+.form-container input,
+.form-container select,
+.form-container textarea {
+    width: 100%;
+    padding: 0.8em;
+    margin-bottom: 1em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+    box-sizing: border-box; 
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-container textarea {
+    height: 150px;
+    resize: vertical;
+}
+
+.form-container.btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 0.8em 1.5em;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-align: center;
+    display: inline-block;
+    border-radius: 5px;
+}
+
+.form-container.btn:hover {
+    background-color: #0056b3;
+}
+
+.form-container.errorlist {
+    color: #dc3545;
+    margin-bottom: 1em;
+}

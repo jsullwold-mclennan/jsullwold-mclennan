@@ -1,0 +1,114 @@
+{% extends 'base.html' %}
+
+{% block title %}Book List{% endblock %}
+
+{% block content %}
+<h2>Library Collection</h2>
+
+<h3>Your Current Books</h3>
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>ISBN</th>
+            <th>Publisher</th>
+            <th>Published Date</th>
+            <th>Page Count</th>
+            <th style="width: 110px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in checked_out_books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.genre }}</td>
+            <td>{{ book.isbn }}</td>
+            <td>{{ book.publisher }}</td>
+            <td>{{ book.publication_date }}</td>
+            <td>{{ book.pages }}</td>
+            <td><a class="checkout-btn" href="{% url 'checkin_book' book.id %}">Return Book</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if not checked_out_books %}
+<p>No books available. Start adding books to your collection now!</p>
+{% endif %}
+
+<h3 style="margin-top: 150px;">Available Books</h3>
+{% if user.is_staff %}
+    <div style="text-align: right; margin-bottom: 20px;">
+        <a href="{% url 'add-book' %}" class="btn">Add New Book</a>
+    </div>
+{% endif %}
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>ISBN</th>
+            <th>Publisher</th>
+            <th>Published Date</th>
+            <th>Page Count</th>
+            <th style="width: 110px"></th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in available_books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.genre }}</td>
+            <td>{{ book.isbn }}</td>
+            <td>{{ book.publisher }}</td>
+            <td>{{ book.publication_date }}</td>
+            <td>{{ book.pages }}</td>
+            <td><a class="checkout-btn" href="{% url 'checkout_book' book.id %}">Check Out!</a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if not available_books %}
+<p>No books available. Check back later!</p>
+{% endif %}
+
+<h3 style="margin-top: 150px;">Unavailable Books</h3>
+
+<table>
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genre</th>
+            <th>ISBN</th>
+            <th>Publisher</th>
+            <th>Published Date</th>
+            <th>Page Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for book in unavailable_books %}
+        <tr>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.genre }}</td>
+            <td>{{ book.isbn }}</td>
+            <td>{{ book.publisher }}</td>
+            <td>{{ book.publication_date }}</td>
+            <td>{{ book.pages }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% if not unavailable_books %}
+<p>All books are available!</p>
+{% endif %}
+{% endblock %}
