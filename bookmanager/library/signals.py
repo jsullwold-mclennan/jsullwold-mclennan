@@ -11,3 +11,4 @@ def update_checked_out_status(sender, instance, created, **kwargs):
             print(f'{instance.title} has been checked out.')
         else:
             print(f'{instance.title} has been checked in.')
+            

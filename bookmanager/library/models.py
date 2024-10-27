@@ -74,14 +74,17 @@ class Book(models.Model):
         ordering = ['title']
 
     def clean(self):
-        if len(self.isbn) not in [10, 12, 13, 15]:
+        if len(self.isbn) not in [10, 13]:
             raise ValidationError('ISBN must be 10 or 13 characters long.')
 
         if self.publication_date > timezone.now().date():
             raise ValidationError('Publication date cannot be in the future.')
 
-        if self.checked_out and self.checked_out_by:
-            raise ValidationError('This book is already checked out.')
+        if self.checked_out and not self.checked_out_by:
+            raise ValidationError('A checked-out book must have a user associated with it.')
+
+        if not self.checked_out and self.checked_out_by:
+            raise ValidationError('A checked-in book should not have a user associated with it.')
 
     def save(self, *args, **kwargs):
         # Call the clean method before saving
