@@ -74,7 +74,7 @@ class Book(models.Model):
         ordering = ['title']
 
     def clean(self):
-        if len(self.isbn) not in [10, 13]:
+        if len(self.isbn) not in [10, 12, 13, 15]:
             raise ValidationError('ISBN must be 10 or 13 characters long.')
 
         if self.publication_date > timezone.now().date():
