@@ -62,7 +62,7 @@ def add_book(request):
         
         if form.is_valid():
             form.save()
-            return redirect('book-list')
+            return redirect('list-books')
     else:
         form = BookForm()
 
@@ -75,14 +75,14 @@ def checkout_book(request, book_id):
         book.checked_out = True
         book.checked_out_by = request.user
         book.save()
-    return redirect('book-list')
+    return redirect('list-books')
 
 @login_required
 def checkin_book(request, book_id):
     book = get_object_or_404(Book, id=book_id, checked_out_by=request.user)
     book.check_in()
     
-    return redirect('book-list')
+    return redirect('list-books')
 
 def register(request):
     if request.method == 'POST':
@@ -91,8 +91,12 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect('book-list')
+            return redirect('list-books')
     else:
         form = UserCreationForm()
     
     return render(request, 'register.html', {'form': form})
+
+@login_required
+def api_book_list(request):
+    return render(request, 'book_list_api.html')
