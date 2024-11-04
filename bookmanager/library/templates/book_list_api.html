@@ -3,18 +3,21 @@
 {% block content %}
 <div x-data="main" data-user-id="{{ user.username }}">
     <h2>Library Collection</h2>
-    
-    <div class="toast-container">
-        <div x-cloak
-             x-show="isRefreshing"
-             x-transition:enter="transition ease-out duration-300"
-             x-transition:enter-start="opacity-0 transform translate-x-full"
-             x-transition:enter-end="opacity-100 transform translate-x-0"
-             x-transition:leave="transition ease-in duration-300"
-             x-transition:leave-start="opacity-100 transform translate-x-0"
-             x-transition:leave-end="opacity-0 transform translate-x-full"
-             class="toast"
-             :class="{ 'visible': isRefreshing }">
+
+    <div id="toast-wrapper" style="position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+        <div 
+            x-cloak
+            x-show="isRefreshing"
+            class="refresh-toast"
+            style="background-color: white; 
+                   padding: 12px 20px;
+                   border-radius: 8px;
+                   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                   display: flex;
+                   align-items: center;
+                   gap: 8px;
+                   min-width: 200px;
+                   border: 1px solid #dee2e6;">
             <svg class="spinner" width="16" height="16" viewBox="0 0 24 24">
                 <path fill="currentColor" d="M12 4V2C6.5 2 2 6.5 2 12H4C4 7.6 7.6 4 12 4ZM12 20V22C17.5 22 22 17.5 22 12H20C20 16.4 16.4 20 12 20ZM12 6C8.7 6 6 8.7 6 12H8C8 9.8 9.8 8 12 8V6ZM12 18C15.3 18 18 15.3 18 12H16C16 14.2 14.2 16 12 16V18Z"/>
             </svg>
